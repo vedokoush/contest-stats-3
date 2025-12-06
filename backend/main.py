@@ -11,6 +11,7 @@ from contextlib import asynccontextmanager
 from database import create_db_and_tables, engine
 from models import Contest
 from routers import contests as contests_router
+from routers import auth as auth_router
 
 # Lifespan context manager for startup/shutdown
 @asynccontextmanager
@@ -40,6 +41,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(contests_router.router)
+app.include_router(auth_router.router)
 
 @app.get("/health")
 async def health_check():

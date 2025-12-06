@@ -20,4 +20,17 @@ api.interceptors.response.use(
   }
 );
 
+// Attach admin token if available
+api.interceptors.request.use((config) => {
+  try {
+    const token = localStorage.getItem('admin_token');
+    if (token && config.headers) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+  } catch (e) {
+    // ignore (localStorage not available in some environments)
+  }
+  return config;
+});
+
 export { api };

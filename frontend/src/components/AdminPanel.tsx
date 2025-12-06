@@ -199,12 +199,12 @@ export const AdminPanel: React.FC = () => {
                   </label>
                   <input
                     type="number"
-                    min="2020"
+                    min="1900"
                     max={new Date().getFullYear()}
                     value={formData.year}
                     onChange={(e) => setFormData({ ...formData, year: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    placeholder="2025"
+                    placeholder="2030"
                   />
                 </div>
 
@@ -221,6 +221,8 @@ export const AdminPanel: React.FC = () => {
                     <option value="1">Pre #1</option>
                     <option value="2">Pre #2</option>
                     <option value="3">Pre #3</option>
+                    <option value="4">Pre #4</option>
+                    <option value="5">Pre #5</option>
                   </select>
                 </div>
 

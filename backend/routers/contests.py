@@ -9,6 +9,7 @@ from sqlmodel import Session, select
 
 from database import get_session
 from models import Contest, ContestCreate, ContestUpdate, ContestRead
+from .auth import verify_token
 
 router = APIRouter(prefix="/contests", tags=["contests"])
 
@@ -39,6 +40,7 @@ async def get_contest(contest_id: int, session: Session = Depends(get_session)):
 async def create_contest(
     contest: ContestCreate,
     session: Session = Depends(get_session),
+    _token: str = Depends(verify_token),
 ):
     """
     Create a new contest
@@ -54,6 +56,7 @@ async def update_contest(
     contest_id: int,
     contest_update: ContestUpdate,
     session: Session = Depends(get_session),
+    _token: str = Depends(verify_token),
 ):
     """
     Update an existing contest
@@ -79,6 +82,7 @@ async def update_contest(
 async def delete_contest(
     contest_id: int,
     session: Session = Depends(get_session),
+    _token: str = Depends(verify_token),
 ):
     """
     Delete a contest by ID
