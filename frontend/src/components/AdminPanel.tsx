@@ -144,7 +144,7 @@ export const AdminPanel: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="max-w-6xl mx-auto p-6"
+      className="max-w-7xl mx-auto px-10 py-6"
     >
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Admin Panel</h1>
@@ -157,7 +157,7 @@ export const AdminPanel: React.FC = () => {
           </Dialog.Trigger>
           <Dialog.Portal>
             <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
-            <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-full max-w-md translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg shadow-xl">
+            <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg shadow-xl p-6">
               <div className="flex items-center justify-between mb-6 border-b border-gray-200 pb-4">
                 <Dialog.Title className="text-lg font-semibold text-gray-900">
                   {editingId ? 'Edit Contest' : 'Add New Contest'}

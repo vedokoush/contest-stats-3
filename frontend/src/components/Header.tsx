@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GraduationCap } from 'lucide-react'
+import { GraduationCap } from 'lucide-react';
 import { Button } from './Button';
+import logo from '../assets/logo.png';
 
+// Import the logo image
 /**
  * Header component - main navigation header with class selection
  * Sticky positioning with smooth animations
@@ -17,41 +19,43 @@ export const Header: React.FC<HeaderProps> = ({ selectedClass, onSelectClass }) 
   const classes = [9, 10, 11, 12];
 
   return (
-    <header
-      className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm"
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between gap-6">
-          {/* Logo and title */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">P</span>
-            </div>
-            <h1 className="text-xl font-bold text-gray-900">PREHSG Contest Hub</h1>
-          </div>
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+  <div className="max-w-7xl mx-auto px-6 py-6"> {/* tăng từ py-4 -> py-6 */}
+    <div className="flex items-center justify-between gap-8">
 
-          {/* Navigation and controls */}
-          <div className="flex items-center gap-6">
-            {/* Class selection buttons */}
-            <div className="flex gap-2">
-              {classes.map((classLevel) => (
-                <button
-                  key={classLevel}
-                  onClick={() => onSelectClass(classLevel)}
-                  className={`flex gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm ${
-                    selectedClass === classLevel
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  <GraduationCap/>
-                  Class {classLevel}
-                </button>
-              ))}
-            </div>
-          </div>
+      {/* Logo and title */}
+      <div className="flex items-center gap-4 -ml-20">
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-black to-gray-900 flex items-center justify-center shadow-md">
+          <img src={logo} alt="Logo" className="w-9 h-9 object-contain" />
+        </div>
+
+        <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
+          PREHSG Contest Hub
+        </h1>
+      </div>
+
+      {/* Navigation and controls */}
+      <div className="flex items-center gap-6">
+        <div className="flex gap-3">
+          {classes.map((classLevel) => (
+            <button
+              key={classLevel}
+              onClick={() => onSelectClass(classLevel)}
+              className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all duration-200 text-base ${
+                selectedClass === classLevel
+                  ? 'bg-blue-600 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
+              }`}
+            >
+              <GraduationCap className="w-5 h-5"/>
+              Class {classLevel}
+            </button>
+          ))}
         </div>
       </div>
-    </header>
-  );
+
+    </div>
+  </div>
+</header>
+);
 };
